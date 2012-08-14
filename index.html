@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <script src="jquery.js"></script>
+    <script src="raphael-min.js"></script>
+    <script src="raphael-font.js"></script>
+    <script src="breadcrumb.js"></script>
+    <style type="text/css" media="screen">
+      #breadcrumb_canvas {
+        height: 80px;
+      }
+      #mycontent {
+        height: 80px;
+        width: 400px;
+        border: 1px solid #ccc;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="breadcrumb_canvas"></div>
+    <div id="mycontent"></div>
+    <script type="text/javascript" charset="utf-8">
+      var bc = new Breadcrumb("breadcrumb_canvas");
+      var content = $('#mycontent');
+      bc.make("Step 1", function () {
+        content.html('Collect underpants.');
+      });
+      bc.make("Step 2", function () {
+        content.html('???');
+      });
+      bc.make("Step 3", function () {
+        content.html('PROFIT!');
+      });
+      bc.make("Step 4", function () {
+        content.html('Should not get here!');
+      });
+      bc.get("Step 4").makeDisabled();
+      bc.get("Step 1").makeActive();
+    </script>
+  </body>
+</html>
